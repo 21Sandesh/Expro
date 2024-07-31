@@ -1,0 +1,13 @@
+Difference in import { authOptions } and import authOptions
+What is async and await, why they are used, What if we do not use;
+why ...nextauth is used
+
+http://localhost:3000/api/user/getBudgetList?email=sandesh@1.com
+[HTTP/1.1 404 Not Found 236ms]
+
+XHRGET
+http://localhost:3000/api/user/getIncomeList?email=sandesh@1.com
+[HTTP/1.1 404 Not Found 243ms]
+
+XHRGET
+http://localhost:3000/api/user/getExpenseList?email=sandesh@1.com

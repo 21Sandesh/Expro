@@ -1,0 +1,7 @@
+
+npm install prisma --save-dev
+npx prisma init
+npx prisma migrate dev --name init
+npm install @prisma/client
+
+// npx prisma db push

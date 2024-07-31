@@ -1,0 +1,1 @@
+this is a code snippet of page.jsx where I need to create a Budget in Budget Table, Help me in creating the Entry in PRISMA and mysql - 

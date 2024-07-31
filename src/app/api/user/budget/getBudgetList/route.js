@@ -1,0 +1,42 @@
+import { db } from '../../../../../lib/db';
+import { NextResponse } from 'next/server';
+
+export async function GET(req) {
+    const { searchParams } = new URL(req.url, `http://${req.headers.host}`);
+    const email = searchParams.get('email');
+
+    if (!email) {
+        return NextResponse.json({ error: 'Email is required' }, { status: 400 });
+    }
+
+    try {
+        const budgetList = await db.budget.findMany({
+            where: {
+                createdBy: email,
+            },
+            include: {
+                expenses: {
+                    select: {
+                        amount: true,
+                    },
+                },
+            },
+        });
+
+        const result = budgetList.map(budget => {
+            const totalSpend = budget.expenses.reduce((acc, expense) => acc + parseFloat(expense.amount || 0), 0);
+            const totalItem = budget.expenses.length;
+
+            return {
+                ...budget,
+                totalSpend,
+                totalItem,
+            };
+        });
+
+        return NextResponse.json(result);
+    } catch (error) {
+        console.error(error);
+        NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    }
+}
