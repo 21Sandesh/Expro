@@ -50,7 +50,7 @@ To run this project locally, follow these steps:
 1. **Clone the repository**:
 
    ```bash
-   git clone [https://github.com/21Sandeshexpro.git](https://github.com/21Sandesh/Expro.git)
+   git clone https://github.com/21Sandesh/Expro.git
    cd expro
    ```
 
